@@ -1,0 +1,371 @@
+/* ============================================================
+   Ian Hinkley Playlists — shared styles
+   Palette derived from the original handwritten manuscript photo:
+   warm cream paper, graphite pencil, sepia ink.
+   ============================================================ */
+:root {
+  --paper:      #ede3cc;
+  --paper-deep: #d9cba8;
+  --paper-edge: #c4b48f;
+  --highlight:  #f4ecd8;
+  --ink:        #2d2823;
+  --ink-soft:   #5c5345;
+  --ink-faint:  #8a7e69;
+  --sepia:      #8b6f47;
+  --sepia-dark: #6b5232;
+  --rule:       rgba(45,40,35,0.18);
+  --shadow:     0 1px 0 rgba(45,40,35,0.06), 0 12px 32px -12px rgba(45,40,35,0.18);
+  --max:        1180px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(139,111,71,0.10) 0%, transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--sepia-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+/* ----- Top bar ----- */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(237,227,204,0.92);
+  backdrop-filter: saturate(1.1) blur(6px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-inner {
+  max-width: var(--max); margin: 0 auto; padding: 12px 28px;
+  display: flex; align-items: center; gap: 18px;
+}
+.topbar-brand {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600; font-size: 17px; letter-spacing: 0.01em;
+  color: var(--ink); text-decoration: none;
+}
+.topbar-brand .marque {
+  font-family: "Caveat", cursive; color: var(--sepia-dark);
+  margin-right: 6px; font-size: 19px;
+}
+.topbar-nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+.topbar-nav a { color: var(--ink-soft); text-decoration: none; }
+.topbar-nav a:hover { color: var(--ink); }
+.btn-spotify, .btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 999px;
+  font-family: "Source Serif 4", serif; font-weight: 500; font-size: 14px;
+  text-decoration: none; transition: transform .15s ease, background .2s ease, color .2s ease;
+}
+.btn-spotify { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.btn-spotify:hover { background: var(--sepia-dark); color: var(--paper); transform: translateY(-1px); }
+.btn-spotify .play {
+  display: inline-grid; place-items: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--paper); color: var(--ink);
+  font-size: 10px; line-height: 1; padding-left: 1px;
+}
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* ----- Section frame ----- */
+section { max-width: var(--max); margin: 0 auto; padding: 56px 28px; }
+.section-head {
+  display: flex; align-items: baseline; gap: 18px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 12px; margin-bottom: 32px;
+}
+.section-num { font-family: "Caveat", cursive; font-size: 22px; color: var(--sepia-dark); }
+.section-head h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 3.2vw, 40px); font-weight: 600;
+  margin: 0; letter-spacing: -0.005em;
+}
+.section-head .section-sub {
+  margin-left: auto; font-size: 14px; color: var(--ink-faint); font-style: italic;
+}
+
+/* ====================================================================
+   HOME PAGE
+   ==================================================================== */
+.home-hero {
+  max-width: var(--max); margin: 0 auto; padding: 56px 28px 36px;
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 56px; align-items: center;
+}
+.home-hero .hero-image-wrap {
+  position: relative;
+  transform: rotate(-1.2deg);
+  box-shadow: var(--shadow);
+  background: var(--highlight);
+  border: 1px solid var(--paper-edge);
+  padding: 14px;
+}
+.home-hero .hero-image-wrap::before,
+.home-hero .hero-image-wrap::after {
+  content: ""; position: absolute; width: 86px; height: 22px;
+  background: rgba(139,111,71,0.18);
+  border: 1px solid rgba(139,111,71,0.25);
+  top: -10px; transform: rotate(-4deg);
+}
+.home-hero .hero-image-wrap::before { left: 18px; }
+.home-hero .hero-image-wrap::after  { right: 18px; transform: rotate(3deg); }
+.home-hero .hero-image-wrap svg { display: block; width: 100%; height: auto; }
+.home-hero .hero-text .eyebrow {
+  font-family: "Caveat", cursive; font-size: 22px; color: var(--sepia-dark);
+  letter-spacing: 0.02em; margin-bottom: 6px;
+}
+.home-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600; font-size: clamp(40px, 5.4vw, 68px);
+  line-height: 1.02; letter-spacing: -0.01em;
+  margin: 0 0 18px; color: var(--ink);
+}
+.home-hero h1 em {
+  font-family: "Caveat", cursive; font-style: normal; color: var(--sepia-dark); font-weight: 600;
+}
+.home-hero .lede {
+  font-size: 19px; color: var(--ink-soft); max-width: 560px; margin: 0 0 24px;
+}
+.home-hero .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.tile-grid {
+  max-width: var(--max); margin: 0 auto; padding: 32px 28px 80px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.tile {
+  background: var(--highlight);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow);
+  text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 0 rgba(45,40,35,0.06), 0 24px 40px -16px rgba(45,40,35,0.28);
+  color: var(--ink);
+}
+.tile-cover {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.tile-cover svg, .tile-cover img { display: block; width: 100%; height: 100%; }
+.tile-body { padding: 18px 20px 22px; }
+.tile-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px; font-weight: 600; line-height: 1.15;
+  margin: 0 0 6px;
+}
+.tile-month {
+  font-family: "Caveat", cursive; color: var(--sepia-dark);
+  font-size: 16px; margin-bottom: 8px;
+}
+.tile-desc { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+/* ====================================================================
+   DETAIL PAGE
+   ==================================================================== */
+.detail-hero {
+  max-width: var(--max); margin: 0 auto; padding: 56px 28px 36px;
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 56px; align-items: center;
+}
+.detail-cover-wrap {
+  position: relative;
+  transform: rotate(-1.2deg);
+  box-shadow: var(--shadow);
+  background: var(--highlight);
+  border: 1px solid var(--paper-edge);
+  padding: 14px;
+  aspect-ratio: 1 / 1;
+}
+.detail-cover-wrap::before, .detail-cover-wrap::after {
+  content: ""; position: absolute; width: 86px; height: 22px;
+  background: rgba(139,111,71,0.18);
+  border: 1px solid rgba(139,111,71,0.25);
+  top: -10px; transform: rotate(-4deg);
+}
+.detail-cover-wrap::before { left: 18px; }
+.detail-cover-wrap::after  { right: 18px; transform: rotate(3deg); }
+.detail-cover-wrap img,
+.detail-cover-wrap svg { display: block; width: 100%; height: 100%; }
+.detail-meta .crumb {
+  font-family: "Caveat", cursive; color: var(--sepia-dark); font-size: 18px;
+  text-decoration: none; display: inline-block; margin-bottom: 6px;
+}
+.detail-meta .crumb:hover { color: var(--ink); }
+.detail-meta .eyebrow {
+  font-family: "Caveat", cursive; font-size: 22px; color: var(--sepia-dark);
+}
+.detail-meta h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600; font-size: clamp(40px, 5.4vw, 64px);
+  line-height: 1.02; letter-spacing: -0.01em;
+  margin: 6px 0 18px;
+}
+.detail-meta h1 em {
+  font-family: "Caveat", cursive; font-style: normal; color: var(--sepia-dark); font-weight: 600;
+}
+.detail-meta .month {
+  font-family: "Caveat", cursive; color: var(--sepia-dark); font-size: 22px; margin-bottom: 14px;
+}
+.detail-meta .lede { font-size: 18px; color: var(--ink-soft); max-width: 560px; }
+.detail-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.detail-stats {
+  margin-top: 28px;
+  display: flex; gap: 32px; flex-wrap: wrap;
+  border-top: 1px solid var(--rule); padding-top: 22px;
+}
+.detail-stats div { font-family: "Caveat", cursive; color: var(--ink-soft); font-size: 18px; }
+.detail-stats strong {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600; font-size: 28px; color: var(--ink); line-height: 1;
+}
+
+/* ----- Overview tabs ----- */
+.overview-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+.overview-tab {
+  background: transparent; border: 1px solid var(--rule);
+  padding: 8px 14px; border-radius: 999px;
+  font-family: "Source Serif 4", serif; font-size: 13px;
+  color: var(--ink-soft); cursor: pointer;
+}
+.overview-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.overview-pane { display: none; }
+.overview-pane.active { display: block; }
+.overview-pane p { font-size: 19px; line-height: 1.65; max-width: 880px; color: var(--ink); margin: 0; }
+.overview-pane.long p { font-size: 17px; }
+
+/* ----- Tracklist (interactive table) ----- */
+.tracks { list-style: none; margin: 0; padding: 0; }
+.track {
+  display: grid;
+  grid-template-columns: 56px 1fr auto auto;
+  gap: 20px; align-items: center;
+  padding: 16px 8px;
+  border-bottom: 1px dashed var(--rule);
+  transition: background .15s ease;
+}
+.track:hover { background: rgba(139,111,71,0.05); }
+.track-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px; font-weight: 500; color: var(--ink-faint);
+  text-align: right;
+}
+.track-body { min-width: 0; }
+.track-title-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.track-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600; font-size: 22px; color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.track-artist {
+  font-family: "Caveat", cursive; font-size: 20px;
+  color: var(--sepia-dark); text-decoration: none;
+}
+.track-artist:hover { color: var(--ink); border-bottom: 1px solid var(--sepia-dark); }
+.track-meta {
+  margin-top: 4px;
+  font-size: 14px; color: var(--ink-soft); display: flex; gap: 14px; flex-wrap: wrap;
+}
+.track-album { font-style: italic; }
+.track-songwriter::before { content: "✎  "; color: var(--ink-faint); }
+.track-duration {
+  font-variant-numeric: tabular-nums;
+  font-family: "Source Serif 4", serif;
+  font-size: 14px; color: var(--ink-soft); white-space: nowrap;
+}
+.track-actions { display: flex; gap: 8px; }
+.btn-spotify-sm, .btn-share {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--rule); cursor: pointer;
+  font-size: 14px; text-decoration: none;
+}
+.btn-spotify-sm:hover { background: var(--ink); color: var(--paper); }
+.btn-share:hover { background: var(--sepia); color: var(--paper); }
+.btn-share.copied { background: var(--sepia-dark); color: var(--paper); }
+
+/* ----- Artist cards ----- */
+.artist-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;
+}
+.artist-card {
+  background: var(--highlight);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow);
+  padding: 24px 26px;
+  scroll-margin-top: 100px;
+}
+.artist-card:target { box-shadow: 0 0 0 2px var(--sepia), var(--shadow); }
+.artist-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; margin-bottom: 14px;
+}
+.artist-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px; font-weight: 600; margin: 0; color: var(--ink);
+}
+.artist-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.artist-links a {
+  font-size: 13px; color: var(--sepia-dark); text-decoration: none;
+  border-bottom: 1px solid var(--sepia);
+}
+.artist-links a:hover { color: var(--ink); }
+.artist-desc { margin: 0 0 16px; color: var(--ink); font-size: 15.5px; }
+.artist-tags { margin: 0; display: grid; gap: 8px; }
+.artist-tags > div {
+  display: grid; grid-template-columns: 130px 1fr; gap: 12px;
+  font-size: 13.5px; line-height: 1.5;
+}
+.artist-tags dt { font-family: "Caveat", cursive; font-size: 16px; color: var(--sepia-dark); }
+.artist-tags dd { margin: 0; color: var(--ink-soft); }
+
+/* ----- Footer ----- */
+footer {
+  max-width: var(--max); margin: 40px auto 0; padding: 24px 28px 60px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  color: var(--ink-soft); font-size: 13px;
+}
+footer .share-row { display: flex; gap: 10px; flex-wrap: wrap; }
+footer .share-row button {
+  background: transparent; border: 1px solid var(--rule);
+  padding: 8px 14px; border-radius: 999px; cursor: pointer;
+  color: var(--ink-soft); font-family: "Source Serif 4", serif; font-size: 13px;
+}
+footer .share-row button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ----- Toast ----- */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: var(--paper);
+  padding: 10px 18px; border-radius: 999px; font-size: 13px;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+  z-index: 100;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ----- Responsive ----- */
+@media (max-width: 880px) {
+  .detail-hero,
+  .home-hero { grid-template-columns: 1fr; padding-top: 28px; gap: 32px; }
+  .artist-grid { grid-template-columns: 1fr; }
+  .topbar-nav { display: none; }
+  .track { grid-template-columns: 40px 1fr; gap: 12px; }
+  .track-duration { grid-column: 2; margin-top: 4px; }
+  .track-actions  { grid-column: 2; justify-content: flex-end; }
+}
